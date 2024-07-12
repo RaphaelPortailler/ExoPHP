@@ -68,6 +68,6 @@ class Pizza {
 }
 
 $pizzaRaph = new Pizza("tomate", "xl", "jambon", "champignons", "oeuf");
-$pizzaRaph->pay();
+$pizzaRaph->pay(10);
 $pizzaRaph->ship();
 var_dump($pizzaRaph);
