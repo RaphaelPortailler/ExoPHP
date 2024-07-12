@@ -5,9 +5,9 @@
         <!-- on effectue une boucle pour parcourir le tableau des commandes stockés dans la variables $orders et venir créer un article de chacune de ces commandes -->
             <?php foreach($orders as $order){ ?>
                 <article>
-                    <p>ID :<?php echo " " . $order['id']; ?></p>
-                    <p>Customer :<?php echo " " . $order['customer']; ?></p>
-                    <p>Amout :<?php echo " " . $order['amount']; ?></p>
+                    <p>Identifiant :<?php echo " " . $order['id']; ?></p>
+                    <p>Client :<?php echo " " . $order['customer']; ?></p>
+                    <p>Montant :<?php echo " " . $order['amount']; ?></p>
                     <?php foreach($order['products'] as $product){ ?>
                             <p>Produit :<?php echo " " . $product; ?><p>
                     <?php } ?>
