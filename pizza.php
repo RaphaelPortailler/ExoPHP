@@ -44,10 +44,14 @@ class Pizza {
         }
     } 
     
-    public function pay(){
+    public function pay($montant){
         if($this->status === "en cours de commande"){
-            $this->status = "payé";
-            echo "La commande est payée";
+            if($this->price === $montant){
+                echo "Merci pour votre commande, a bientot";
+                $this->status = "payé";
+            } else {
+                echo "Veuillez regler le bon montant s'il vous plait, merci.";
+            }
         } else {
             echo "Commande non validée";
         }
