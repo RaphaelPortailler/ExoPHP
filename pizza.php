@@ -47,13 +47,13 @@ class Pizza {
     public function pay($montant){
         if($this->status === "en cours de commande"){
             if($this->price === $montant){
-                echo "Merci pour votre commande, a bientot";
+                echo "<p> Merci pour votre commande, a bientot </p>";
                 $this->status = "payé";
             } else {
-                echo "Veuillez regler le bon montant s'il vous plait, merci.";
+                echo "<p> Veuillez regler le bon montant s'il vous plait, merci. </p>";
             }
         } else {
-            echo "Commande non validée";
+            echo "<p> Commande non validée </p>";
         }
     }
 
@@ -65,9 +65,39 @@ class Pizza {
             echo "La commande n'est pas encore payée";
         }
     }
+
+    public function getIngredients(){
+        return $this->ingredient1 . ', ' . $this->ingredient2 . ', ' . $this->ingredient3;
+    }
+    
+    public function getSize(){
+        return $this->size;
+    }
+    
+    public function getPrice(){
+        return $this->price;
+    }
+    
+    public function getBase(){
+        return $this->base;
+    }
 }
 
 $pizzaRaph = new Pizza("tomate", "xl", "jambon", "champignons", "oeuf");
-$pizzaRaph->pay(10);
-$pizzaRaph->ship();
-var_dump($pizzaRaph);
+// var_dump($pizzaRaph);
+// $pizzaRaph->pay(14);
+// $pizzaRaph->ship();
+
+?> 
+<main>
+    <div>
+        <h2>Ingrédients : </h2>
+            <p><?php echo $pizzaRaph->getIngredients(); ?></p>
+        <h2>Taille : </h2>
+            <p><?php echo $pizzaRaph->getSize(); ?></p>
+        <h2>Prix : </h2>
+            <p><?php echo $pizzaRaph->getPrice(); ?></p>
+        <h2>Base : </h2>
+            <p><?php echo $pizzaRaph->getBase(); ?></p>
+    </div>
+</main>
