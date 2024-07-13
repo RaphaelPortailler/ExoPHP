@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 
 class Pizza {
 
@@ -87,12 +88,43 @@ $pizzaRaph = new Pizza("tomate", "xl", "jambon", "champignons", "oeuf");
 // var_dump($pizzaRaph);
 // $pizzaRaph->pay(14);
 // $pizzaRaph->ship();
+?>
 
-?> 
+<!-- // // Parametre pour la connexion : 
+// $servername = 'localhost';
+// $dbname = 'restaurant';
+// $login = '';
+// $password = '';
+
+// $conn = new PDO($servername, $login, $password);
+// echo $conn; -->
+
+<?php
+$dsn = "mysql:host=127.0.0.1:8889;dbname=restaurant";
+$username = "root";
+$password = "root";
+try {
+    $pdo = new PDO($dsn, $username, $password);
+    echo "";
+} catch (PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
+}
+
+$sql = "SELECT coding, libing FROM ingredients";
+
+?>
+
 <main>
     <div>
         <h2>Ingrédients : </h2>
-            <p><?php echo $pizzaRaph->getIngredients(); ?></p>
+            <p>
+                <?php 
+                    foreach  ($pdo->query($sql) as $row) {
+                        print '-' . ' ' . $row['libing'] . '<br>';
+                    } 
+                ?>
+            </p>
+
         <h2>Taille : </h2>
             <p><?php echo $pizzaRaph->getSize(); ?></p>
         <h2>Prix : </h2>
