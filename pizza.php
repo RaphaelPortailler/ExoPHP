@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Pizza {
 
@@ -87,8 +87,8 @@ $pizzaRaph = new Pizza("tomate", "xl", "jambon", "champignons", "oeuf");
 // var_dump($pizzaRaph);
 // $pizzaRaph->pay(14);
 // $pizzaRaph->ship();
+?>
 
-?> 
 <main>
     <div>
         <h2>Ingrédients : </h2>
@@ -101,3 +101,104 @@ $pizzaRaph = new Pizza("tomate", "xl", "jambon", "champignons", "oeuf");
             <p><?php echo $pizzaRaph->getBase(); ?></p>
     </div>
 </main>
+
+
+                <!--    -------- VU AVEC PAPA  --------    -->
+
+<!-- // // Parametre pour la connexion : 
+// $servername = 'localhost';
+// $dbname = 'restaurant';
+// $login = '';
+// $password = '';
+
+// $conn = new PDO($servername, $login, $password);
+// echo $conn; -->
+
+<?php
+mysqli_report(MYSQLI_REPORT_OFF);
+// $dsn = "127.0.0.1:8889;dbname=restaurant";
+$dsn = "127.0.0.1:8889";
+$bdd = "restaurant";
+$username = "root";
+$password = "root";
+
+$link = mysqli_connect($dsn, $username, $password, $bdd) or die ("tout pourris la connexion");
+echo "coucou3";
+$sql = "SELECT coding, libing FROM ingredients"; 
+// $sql = "SELECT coding, libing FROM ingredients WHERE coding=2"; 
+// $sql = "INSERT into ingredients VALUES (9, 'lardons')";
+// $sql = "UPDATE ingredients SET libing = 'lardon' WHERE coding=9";
+$sql = "DELETE from ingredients WHERE coding=7";
+// $sql = "SELECT * FROM ingredients";
+echo $sql . "<br>";
+$date_jour = date("l/m///h:i:s");
+echo $date_jour;
+$result = mysqli_query($link, $sql);
+$nombre = mysqli_affected_rows($link);
+echo "Update Rows : " . $nombre;
+echo "<br>";
+echo "Query : " . $sql;
+echo "<br>";
+$date_jour = date("l/m///h:i:s");
+echo $date_jour;
+
+$noerreur = mysqli_errno($link);
+echo "Numero Erreur : " . $noerreur;
+// exit();
+$erreur = mysqli_error($link);
+$noerreur = mysqli_errno($link);
+echo "Numero Erreur : " . $noerreur;
+echo "erreur : " . $erreur;
+echo "<br>";
+echo "<br>";
+$ligne = mysqli_fetch_array($result);
+$erreur = mysqli_error($link);
+$noerreur = mysqli_errno($link);
+$nombre = mysqli_num_rows($result);
+echo "Nombre de ligne trouvée : " . $nombre;
+echo "<br>";
+echo "<hr>";
+echo "Numero Erreur : " . $noerreur;
+echo "<br>";
+echo "<hr>";
+echo "erreur : " . $erreur;
+echo "<br>";
+echo "<hr>";
+echo "<hr>";
+
+$compteur = 1;
+while ($compteur <= $nombre){
+    echo "libelle ingredients : " . $ligne['libing'];
+    echo "<br>";
+    $compteur = $compteur + 1;
+    $ligne = mysqli_fetch_array($result);
+}
+// echo "ligne" . $ligne["libing"];
+// $ligne = mysqli_fetch_array($result);
+// echo "<br>";
+// echo "ligne" . $ligne["libing"];
+// $ligne = mysqli_fetch_array($result);
+// echo "<br>";
+// echo "ligne" . $ligne["libing"];
+
+
+
+// Parametre pour la connexion : (l'adresse de l'IP, nom de la BDD, user et mdp) : 
+// $dsn = "mysql:host=127.0.0.1:8889;dbname=restaurant";
+// $username = "root";
+// $password = "root";
+
+// // Je me connect a la base et gestion des erreurs.
+// try {
+//     $pdo = new PDO($dsn, $username, $password);
+//     echo "tout va bien navette";
+// } catch (PDOException $e) { 
+//     die("Erreur de connexion : " . $e->getMessage());
+// }
+
+// Construction de la requete à éxécuter :
+// $sql = "SELECT coding, libing FROM ingredients"; 
+// echo "coucou1";
+
+?>
+
