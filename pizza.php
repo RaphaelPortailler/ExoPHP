@@ -1,22 +1,16 @@
 <?php
 
-class Pizza {
+require_once('./Meal.php');
 
-    private $price;
+class Pizza extends Meal {
 
     private $base;
-
-    private $size;
 
     private $ingredient1;
 
     private $ingredient2;
 
     private $ingredient3;
-
-    private $status;
-
-    private $orderedAt;
 
     public function __construct($base, $size, $ingredient1, $ingredient2, $ingredient3){
         $this->base = $base;
@@ -43,28 +37,6 @@ class Pizza {
             $this->price = 14;
         }
     } 
-    
-    public function pay($montant){
-        if($this->status === "en cours de commande"){
-            if($this->price === $montant){
-                echo "<p> Merci pour votre commande, a bientot </p>";
-                $this->status = "payé";
-            } else {
-                echo "<p> Veuillez regler le bon montant s'il vous plait, merci. </p>";
-            }
-        } else {
-            echo "<p> Commande non validée </p>";
-        }
-    }
-
-    public function ship(){
-        if($this->status === "payé"){
-            $this->status = "livré";
-            echo "La commande a été livrée";
-        } else {
-            echo "La commande n'est pas encore payée";
-        }
-    }
 
     public function getIngredients(){
         return $this->ingredient1 . ', ' . $this->ingredient2 . ', ' . $this->ingredient3;
@@ -103,6 +75,14 @@ $pizzaRaph = new Pizza("tomate", "xl", "jambon", "champignons", "oeuf");
 </main>
 
 
+
+
+
+
+
+
+
+
                 <!--    -------- VU AVEC PAPA  --------    -->
 
 <!-- // // Parametre pour la connexion : 
@@ -114,65 +94,67 @@ $pizzaRaph = new Pizza("tomate", "xl", "jambon", "champignons", "oeuf");
 // $conn = new PDO($servername, $login, $password);
 // echo $conn; -->
 
-<?php
-mysqli_report(MYSQLI_REPORT_OFF);
-// $dsn = "127.0.0.1:8889;dbname=restaurant";
-$dsn = "127.0.0.1:8889";
-$bdd = "restaurant";
-$username = "root";
-$password = "root";
 
-$link = mysqli_connect($dsn, $username, $password, $bdd) or die ("tout pourris la connexion");
-echo "coucou3";
-$sql = "SELECT coding, libing FROM ingredients"; 
+
+<?php
+// mysqli_report(MYSQLI_REPORT_OFF);
+// $dsn = "127.0.0.1:8889;dbname=restaurant";
+// $dsn = "127.0.0.1:8889";
+// $bdd = "restaurant";
+// $username = "root";
+// $password = "root";
+
+// $link = mysqli_connect($dsn, $username, $password, $bdd) or die ("tout pourris la connexion");
+// echo "coucou3";
+// $sql = "SELECT coding, libing FROM ingredients"; 
 // $sql = "SELECT coding, libing FROM ingredients WHERE coding=2"; 
 // $sql = "INSERT into ingredients VALUES (9, 'lardons')";
 // $sql = "UPDATE ingredients SET libing = 'lardon' WHERE coding=9";
-$sql = "DELETE from ingredients WHERE coding=7";
+// $sql = "DELETE from ingredients WHERE coding=7";
 // $sql = "SELECT * FROM ingredients";
-echo $sql . "<br>";
-$date_jour = date("l/m///h:i:s");
-echo $date_jour;
-$result = mysqli_query($link, $sql);
-$nombre = mysqli_affected_rows($link);
-echo "Update Rows : " . $nombre;
-echo "<br>";
-echo "Query : " . $sql;
-echo "<br>";
-$date_jour = date("l/m///h:i:s");
-echo $date_jour;
+// echo $sql . "<br>";
+// $date_jour = date("l/m///h:i:s");
+// echo $date_jour;
+// $result = mysqli_query($link, $sql);
+// $nombre = mysqli_affected_rows($link);
+// echo "Update Rows : " . $nombre;
+// echo "<br>";
+// echo "Query : " . $sql;
+// echo "<br>";
+// $date_jour = date("l/m///h:i:s");
+// echo $date_jour;
 
-$noerreur = mysqli_errno($link);
-echo "Numero Erreur : " . $noerreur;
-// exit();
-$erreur = mysqli_error($link);
-$noerreur = mysqli_errno($link);
-echo "Numero Erreur : " . $noerreur;
-echo "erreur : " . $erreur;
-echo "<br>";
-echo "<br>";
-$ligne = mysqli_fetch_array($result);
-$erreur = mysqli_error($link);
-$noerreur = mysqli_errno($link);
-$nombre = mysqli_num_rows($result);
-echo "Nombre de ligne trouvée : " . $nombre;
-echo "<br>";
-echo "<hr>";
-echo "Numero Erreur : " . $noerreur;
-echo "<br>";
-echo "<hr>";
-echo "erreur : " . $erreur;
-echo "<br>";
-echo "<hr>";
-echo "<hr>";
+// $noerreur = mysqli_errno($link);
+// echo "Numero Erreur : " . $noerreur;
+// // exit();
+// $erreur = mysqli_error($link);
+// $noerreur = mysqli_errno($link);
+// echo "Numero Erreur : " . $noerreur;
+// echo "erreur : " . $erreur;
+// echo "<br>";
+// echo "<br>";
+// $ligne = mysqli_fetch_array($result);
+// $erreur = mysqli_error($link);
+// $noerreur = mysqli_errno($link);
+// $nombre = mysqli_num_rows($result);
+// echo "Nombre de ligne trouvée : " . $nombre;
+// echo "<br>";
+// echo "<hr>";
+// echo "Numero Erreur : " . $noerreur;
+// echo "<br>";
+// echo "<hr>";
+// echo "erreur : " . $erreur;
+// echo "<br>";
+// echo "<hr>";
+// echo "<hr>";
 
-$compteur = 1;
-while ($compteur <= $nombre){
-    echo "libelle ingredients : " . $ligne['libing'];
-    echo "<br>";
-    $compteur = $compteur + 1;
-    $ligne = mysqli_fetch_array($result);
-}
+// $compteur = 1;
+// while ($compteur <= $nombre){
+//     echo "libelle ingredients : " . $ligne['libing'];
+//     echo "<br>";
+//     $compteur = $compteur + 1;
+//     $ligne = mysqli_fetch_array($result);
+// }
 // echo "ligne" . $ligne["libing"];
 // $ligne = mysqli_fetch_array($result);
 // echo "<br>";
