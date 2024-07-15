@@ -14,7 +14,7 @@ $password = "root";
 // Je me connect a la base et gestion des erreurs.
 try {
     $pdo = new PDO($dsn, $username, $password);
-    echo "tout va bien navette";
+    // echo "tout va bien navette";
 } catch (PDOException $e) { 
     die("Erreur de connexion : " . $e->getMessage());
 }
