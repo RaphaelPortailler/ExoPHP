@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 session_set_cookie_params(3600);
 
 // Parametre pour la connexion : (l'adresse de l'IP, nom de la BDD, user et mdp) : 
-$dsn = "mysql:host=127.0.0.1:8889;dbname=restaurant";
+$dsn = "mysql:host=127.0.0.1:8889;dbname=pisicine_php";
 $username = "root";
 $password = "root";
 
