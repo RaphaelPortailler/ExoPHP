@@ -1,6 +1,6 @@
 <?php
 
-class Meal {
+abstract class Meal {
 
     protected $size;
 
