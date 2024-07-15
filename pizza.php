@@ -1,22 +1,16 @@
 <?php
 
-class Pizza {
+require_once('./Meal.php');
 
-    private $price;
+class Pizza extends Meal {
 
     private $base;
-
-    private $size;
 
     private $ingredient1;
 
     private $ingredient2;
 
     private $ingredient3;
-
-    private $status;
-
-    private $orderedAt;
 
     public function __construct($base, $size, $ingredient1, $ingredient2, $ingredient3){
         $this->base = $base;
@@ -43,28 +37,6 @@ class Pizza {
             $this->price = 14;
         }
     } 
-    
-    public function pay($montant){
-        if($this->status === "en cours de commande"){
-            if($this->price === $montant){
-                echo "<p> Merci pour votre commande, a bientot </p>";
-                $this->status = "payé";
-            } else {
-                echo "<p> Veuillez regler le bon montant s'il vous plait, merci. </p>";
-            }
-        } else {
-            echo "<p> Commande non validée </p>";
-        }
-    }
-
-    public function ship(){
-        if($this->status === "payé"){
-            $this->status = "livré";
-            echo "La commande a été livrée";
-        } else {
-            echo "La commande n'est pas encore payée";
-        }
-    }
 
     public function getIngredients(){
         return $this->ingredient1 . ', ' . $this->ingredient2 . ', ' . $this->ingredient3;
