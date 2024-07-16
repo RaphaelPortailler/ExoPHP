@@ -11,7 +11,7 @@ $titre = "Exemple de titre";
 $sous_titre = "Exemple de sous-titre";
 $description = "Ceci est une description d'exemple pour le produit.";
 
-// Avec bindParam on viens vérifier que la valeur de chaque élément a inserer dans notre colonne article ne soit pas une VRAI requete SQL 
+// Avec bindParam on viens vérifier que la valeur de chaque élément a inserer dans notre colonne article ne soit pas une VRAI requete SQL (injection SQL).
 $stmt->bindParam(':title', $titre);
 $stmt->bindParam(':sous_titre', $sous_titre);
 $stmt->bindParam(':descriptions', $description);
